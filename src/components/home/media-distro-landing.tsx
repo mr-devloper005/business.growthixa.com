@@ -1,113 +1,118 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Bell, FileText, Globe, Mic, Shield, TrendingUp } from 'lucide-react'
 
-const accent = '#FF9500'
-const charcoal = '#1c1c1e'
+const navy = '#090040'
+const purple = '#471396'
+const violet = '#B13BFF'
 
 const features = [
   {
-    title: 'Niche-Relevant Sites',
-    description: 'We place your content on platforms that matter to your industry for maximum SEO impact.',
+    icon: FileText,
+    title: 'Official Press Releases',
+    description: 'Access verified, official press releases directly from the Growthixa communications team — no third-party filtering.',
   },
   {
-    title: 'Permanent Backlinks',
-    description: 'Enjoy long-term benefits with permanent placements that drive consistent traffic.',
+    icon: Bell,
+    title: 'Breaking Announcements',
+    description: 'Be the first to know about product launches, partnerships, executive changes, and major corporate milestones.',
   },
   {
-    title: 'High Domain Authority',
-    description: 'Access our curated list of DA50+ and DR40+ websites to boost your rankings.',
+    icon: Shield,
+    title: 'Verified & Accurate',
+    description: 'Every release is published and verified by our communications team to ensure factual accuracy and completeness.',
   },
   {
-    title: 'Detailed Reporting',
-    description: 'Receive comprehensive live-link reports within 24 hours of successful placement.',
+    icon: TrendingUp,
+    title: 'Investor Relations',
+    description: 'Financial news, earnings updates, and investor-relevant announcements published in a timely and transparent manner.',
   },
 ] as const
 
+const stats = [
+  { stat: '500+', label: 'Press Releases' },
+  { stat: '24h', label: 'Response Time' },
+  { stat: '50+', label: 'Media Outlets' },
+  { stat: '100%', label: 'Verified News' },
+]
+
 const testimonials = [
   {
-    quote:
-      'MediaDistro cut our outreach time in half. Placements landed on-topic sites our clients actually care about.',
-    name: 'Jordan Ellis',
-    company: 'Northline Digital Agency',
+    quote: 'The Growthixa newsroom is our go-to source for accurate, timely information. The press team responds quickly and professionally.',
+    name: 'Sarah Mitchell',
+    company: 'TechCrunch Editorial',
   },
   {
-    quote:
-      'Clear reporting and fast turnaround. Our campaigns finally ship with predictable timelines.',
-    name: 'Priya Nandakumar',
-    company: 'Summit Growth Partners',
+    quote: 'Clear, well-structured press releases that give us everything we need without the back-and-forth. Exactly what a modern newsroom should be.',
+    name: 'James Okafor',
+    company: 'Reuters Technology Desk',
   },
   {
-    quote:
-      'We scaled guest posting across five verticals without sacrificing quality or compliance.',
-    name: 'Marcus Chen',
-    company: 'Atlas SEO Collective',
+    quote: 'We rely on the Growthixa newsroom for investor-grade accuracy. Their financial releases are always on time and complete.',
+    name: 'Priya Sharma',
+    company: 'Bloomberg Markets',
   },
 ] as const
 
 export function MediaDistroLanding() {
   return (
-    <main className="bg-white text-neutral-800">
-      <section className="border-b border-neutral-100 bg-[#fafafa] px-4 py-20 sm:px-6 lg:py-28">
-        <div className="mx-auto max-w-3xl text-center">
-          <h1
-            className="font-display text-[2.25rem] font-semibold leading-[1.12] tracking-[-0.03em] sm:text-5xl lg:text-[3.25rem]"
-            style={{ color: charcoal }}
+    <main className="bg-white" style={{ color: navy }}>
+
+      {/* Hero */}
+      <section
+        className="relative overflow-hidden px-4 py-20 sm:px-6 lg:py-28"
+        style={{ background: `linear-gradient(135deg, ${navy} 0%, ${purple} 55%, ${violet} 100%)` }}
+      >
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px',
+          }}
+          aria-hidden
+        />
+        <div className="relative mx-auto max-w-3xl text-center">
+          <span
+            className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-white/80"
+            style={{ borderColor: 'rgba(255,255,255,0.2)' }}
           >
-            Amplify Your Content with Strategic Guest Post Distribution.
+            <Globe className="h-3.5 w-3.5" />
+            Official Newsroom
+          </span>
+          <h1 className="mt-6 font-display text-[2.25rem] font-bold leading-[1.1] tracking-[-0.04em] text-white sm:text-5xl lg:text-[3.25rem]">
+            The Official Growthixa Press & Media Hub
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg">
-            Connect with high-authority publishers and boost your SEO with premium backlinks tailored to your niche.
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
+            Your authoritative source for official press releases, executive announcements, and verified media coverage from Growthixa.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-2xl px-8 py-4 text-base font-semibold text-white shadow-lg transition hover:brightness-95"
-              style={{ backgroundColor: accent }}
+              href="/press-releases"
+              className="inline-flex items-center gap-2 rounded-2xl px-8 py-4 text-base font-semibold text-white shadow-lg transition hover:brightness-110"
+              style={{ background: violet }}
             >
-              Start a campaign
+              Browse Press Releases
               <ArrowRight className="h-5 w-5" aria-hidden />
             </Link>
             <Link
-              href="/updates"
-              className="rounded-2xl border border-neutral-200 bg-white px-6 py-3.5 text-sm font-semibold text-neutral-800 transition hover:bg-neutral-50"
+              href="/contact"
+              className="rounded-2xl border px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/10"
+              style={{ borderColor: 'rgba(255,255,255,0.3)' }}
             >
-              Browse publisher updates
+              Media Inquiries
             </Link>
           </div>
         </div>
       </section>
 
-      <section id="services" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-display text-3xl font-semibold tracking-[-0.02em] text-neutral-900 sm:text-4xl">
-            Built for measurable distribution outcomes
-          </h2>
-          <p className="mt-4 text-neutral-600">
-            Every placement is vetted for topical fit, editorial quality, and lasting SEO value.
-          </p>
-        </div>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
-          {features.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-[1.25rem] border border-neutral-200/80 bg-white p-8 shadow-[0_12px_40px_rgba(0,0,0,0.04)] transition hover:border-neutral-300 hover:shadow-[0_16px_48px_rgba(0,0,0,0.06)]"
-            >
-              <h3 className="font-display text-xl font-semibold text-neutral-900">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-600 sm:text-base">{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="publishers" className="border-y border-neutral-100 bg-white px-4 py-16 sm:px-6">
-        <div className="mx-auto flex max-w-5xl flex-col divide-neutral-200 sm:flex-row sm:divide-x">
-          {[
-            { stat: '5,000+', label: 'Active Publishers' },
-            { stat: '24h', label: 'Average Turnaround' },
-            { stat: '100%', label: 'Index Guarantee' },
-          ].map((row) => (
+      {/* Stats */}
+      <section
+        className="border-y px-4 py-12 sm:px-6"
+        style={{ borderColor: 'rgba(71,19,150,0.1)' }}
+      >
+        <div className="mx-auto flex max-w-5xl flex-col divide-y sm:flex-row sm:divide-x sm:divide-y-0" style={{ divideColor: 'rgba(71,19,150,0.1)' }}>
+          {stats.map((row) => (
             <div key={row.label} className="flex flex-1 flex-col items-center px-6 py-6 text-center sm:py-4">
-              <p className="text-4xl font-semibold sm:text-5xl" style={{ color: accent }}>
+              <p className="font-display text-4xl font-bold sm:text-5xl" style={{ color: violet }}>
                 {row.stat}
               </p>
               <p className="mt-2 text-sm text-neutral-500">{row.label}</p>
@@ -116,41 +121,101 @@ export function MediaDistroLanding() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
-        <h2 className="text-center font-display text-3xl font-semibold tracking-[-0.02em] text-neutral-900 sm:text-4xl">
-          Trusted by Agencies Worldwide
-        </h2>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <blockquote
-              key={t.name}
-              className="flex h-full flex-col rounded-[1.25rem] border border-neutral-200 bg-white p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
+      {/* Features */}
+      <section id="services" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <span
+            className="inline-block rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em]"
+            style={{ background: 'rgba(177,59,255,0.1)', color: purple }}
+          >
+            What we offer
+          </span>
+          <h2 className="mt-4 font-display text-3xl font-bold tracking-[-0.03em] sm:text-4xl" style={{ color: navy }}>
+            Built for journalists, analysts, and stakeholders
+          </h2>
+          <p className="mt-4 text-neutral-500">
+            Everything you need to stay informed about Growthixa — accurate, timely, and directly from the source.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+          {features.map((item) => (
+            <div
+              key={item.title}
+              className="rounded-[1.25rem] border p-8 shadow-sm transition hover:shadow-md"
+              style={{ borderColor: 'rgba(71,19,150,0.12)' }}
             >
-              <p className="font-display text-5xl font-semibold leading-none" style={{ color: accent }} aria-hidden>
-                &ldquo;
-              </p>
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-neutral-700 sm:text-[0.95rem]">{t.quote}</p>
-              <footer className="mt-6 border-t border-neutral-100 pt-5">
-                <p className="font-semibold text-neutral-900">{t.name}</p>
-                <p className="text-sm text-neutral-500">{t.company}</p>
-              </footer>
-            </blockquote>
+              <div
+                className="flex h-11 w-11 items-center justify-center rounded-full"
+                style={{ background: 'rgba(177,59,255,0.1)' }}
+              >
+                <item.icon className="h-5 w-5" style={{ color: violet }} />
+              </div>
+              <h3 className="mt-5 font-display text-xl font-bold" style={{ color: navy }}>{item.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-neutral-500 sm:text-base">{item.description}</p>
+            </div>
           ))}
         </div>
       </section>
 
+      {/* Testimonials */}
+      <section
+        className="px-4 py-16 sm:px-6 lg:py-20"
+        style={{ background: 'rgba(248,244,255,0.5)' }}
+      >
+        <div className="mx-auto max-w-6xl">
+          <h2 className="text-center font-display text-3xl font-bold tracking-[-0.03em] sm:text-4xl" style={{ color: navy }}>
+            Trusted by Media Professionals
+          </h2>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <blockquote
+                key={t.name}
+                className="flex h-full flex-col rounded-[1.25rem] border bg-white p-8 shadow-sm"
+                style={{ borderColor: 'rgba(71,19,150,0.12)' }}
+              >
+                <p
+                  className="font-display text-5xl font-bold leading-none"
+                  style={{ color: violet }}
+                  aria-hidden
+                >
+                  &ldquo;
+                </p>
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-neutral-600 sm:text-[0.95rem]">{t.quote}</p>
+                <footer className="mt-6 border-t pt-5" style={{ borderColor: 'rgba(71,19,150,0.08)' }}>
+                  <p className="font-semibold" style={{ color: navy }}>{t.name}</p>
+                  <p className="text-sm text-neutral-500">{t.company}</p>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
-        <div className="rounded-[1.5rem] bg-neutral-100 px-6 py-14 text-center sm:px-12 sm:py-16">
-          <h2 className="font-display text-2xl font-semibold text-neutral-900 sm:text-3xl">Ready to scale your reach?</h2>
-          <p className="mx-auto mt-4 max-w-xl text-neutral-600">
-            Join hundreds of brands amplifying their voice through our network.
+        <div
+          className="overflow-hidden rounded-[1.5rem] px-6 py-14 text-center sm:px-12 sm:py-16"
+          style={{ background: `linear-gradient(135deg, ${navy} 0%, ${purple} 100%)` }}
+        >
+          <span
+            className="inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/70"
+            style={{ borderColor: 'rgba(255,255,255,0.2)' }}
+          >
+            <Mic className="h-3.5 w-3.5" />
+            Media Contact
+          </span>
+          <h2 className="mt-5 font-display text-2xl font-bold text-white sm:text-3xl">
+            Need official information or a press credential?
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-white/70">
+            Our communications team is available for press inquiries, interview requests, and media kit downloads.
           </p>
           <Link
             href="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-2xl px-8 py-4 text-base font-semibold text-white transition hover:brightness-95"
-            style={{ backgroundColor: accent }}
+            className="mt-8 inline-flex items-center gap-2 rounded-2xl px-8 py-4 text-base font-semibold text-white transition hover:brightness-110"
+            style={{ background: violet }}
           >
-            Start Your First Campaign
+            Contact Press Team
             <ArrowRight className="h-5 w-5" aria-hidden />
           </Link>
         </div>

@@ -1,14 +1,14 @@
 export const siteTaskDefinitions = [
   {
     key: 'mediaDistribution',
-    label: 'Publisher updates',
-    route: '/business',
-    description: 'Network notes, placement guidance, and policy updates.',
+    label: 'Press Releases',
+    route: '/press-releases',
+    description: 'Official press releases, announcements, and media coverage from Growthixa.',
     contentType: 'mediaDistribution',
     enabled: true,
   },
 ] as const
 
 export const siteTaskViews = {
-  mediaDistribution: '/business',
+  mediaDistribution: '/press-releases',
 } as const
