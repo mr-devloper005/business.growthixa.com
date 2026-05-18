@@ -1,131 +1,246 @@
-import Link from 'next/link'
-import { ArrowRight, Clock, Mail, MessageSquare, Shield } from 'lucide-react'
+'use client'
+
+import { useState } from 'react'
+import { ArrowRight } from 'lucide-react'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 
 export const CONTACT_PAGE_OVERRIDE_ENABLED = true
 
-const accent = '#FF9500'
+const navy = '#090040'
+const purple = '#471396'
+const violet = '#B13BFF'
 
-const lanes = [
-  {
-    icon: MessageSquare,
-    title: 'Campaign planning',
-    body: 'Share your URL, niche, anchor preferences, and target markets. We respond with a placement map—not a generic rate card.',
-  },
-  {
-    icon: Shield,
-    title: 'Editorial & compliance',
-    body: 'Questions about disclosure, sponsored tags, or publisher guidelines? Our partnerships desk coordinates with sites before anything goes live.',
-  },
-  {
-    icon: Mail,
-    title: 'Billing & enterprise',
-    body: 'Invoicing, bulk orders, and custom SLAs route through the same thread so finance and SEO stay aligned.',
-  },
-] as const
+const orgTypes = [
+  'News / Media Outlet',
+  'Magazine / Publication',
+  'Podcast / Broadcast',
+  'PR / Communications Agency',
+  'Independent Journalist',
+  'Investor / Analyst',
+  'Other',
+]
+
+const subjects = [
+  'Press Inquiry',
+  'Interview Request',
+  'Press Credentials',
+  'Official Statement',
+  'Media Kit Request',
+  'Partnership',
+  'Other',
+]
 
 export function ContactPageOverride() {
+  const [submitted, setSubmitted] = useState(false)
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setSubmitted(true)
+  }
+
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
+    <div className="min-h-screen bg-white" style={{ color: navy }}>
       <NavbarShell />
-      <header className="border-b border-neutral-100 bg-[#fafafa] px-4 py-14 sm:px-6 lg:py-18">
+
+      {/* Header */}
+      <header
+        className="px-4 py-12 sm:px-6 lg:py-16"
+        style={{ background: `linear-gradient(135deg, ${navy} 0%, ${purple} 100%)` }}
+      >
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: accent }}>
-            Contact
-          </p>
-          <h1 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-[-0.02em] text-neutral-900 sm:text-4xl lg:text-[2.75rem]">
-            Let&rsquo;s plan your next placement wave
+          <h1 className="font-display text-3xl font-bold tracking-[-0.03em] text-white sm:text-4xl">
+            Contact Us
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-neutral-600">
-            Whether you are an agency scaling outreach or a brand testing a new vertical, we match you with publishers
-            that fit your risk profile and quality bar.
+          <p className="mx-auto mt-3 max-w-xl text-base text-white/70">
+            Reach out to our press team for inquiries, interview requests, or media resources.
           </p>
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:py-16">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {lanes.map((lane) => (
-            <div
-              key={lane.title}
-              className="rounded-[1.25rem] border border-neutral-200 bg-white p-7 shadow-[0_8px_28px_rgba(0,0,0,0.04)]"
-            >
-              <lane.icon className="h-6 w-6" style={{ color: accent }} aria-hidden />
-              <h2 className="mt-4 font-display text-lg font-semibold text-neutral-900">{lane.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-600">{lane.body}</p>
-            </div>
-          ))}
-        </div>
+      <main className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:py-16">
+        <div className="grid gap-10 lg:grid-cols-[1fr_320px] lg:items-start">
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-4 rounded-[1.25rem] border border-neutral-200 bg-[#fafafa] px-6 py-5 text-center text-sm text-neutral-600">
-          <Clock className="h-5 w-5 shrink-0" style={{ color: accent }} aria-hidden />
-          <span>
-            <span className="font-semibold text-neutral-900">Typical first reply:</span> one business day for new
-            campaigns. Rush reviews available for active partners—note it in your subject line.
-          </span>
-        </div>
+          {/* Form */}
+          <div
+            className="rounded-[1.25rem] border bg-white p-8 shadow-sm"
+            style={{ borderColor: 'rgba(71,19,150,0.12)' }}
+          >
+            {submitted ? (
+              <div className="flex flex-col items-center py-10 text-center">
+                <div
+                  className="flex h-14 w-14 items-center justify-center rounded-full"
+                  style={{ background: `linear-gradient(135deg, ${purple}, ${violet})` }}
+                >
+                  <ArrowRight className="h-6 w-6 text-white" />
+                </div>
+                <h2 className="mt-5 font-display text-2xl font-bold" style={{ color: navy }}>
+                  Message sent!
+                </h2>
+                <p className="mt-2 text-sm text-neutral-500">
+                  We'll get back to you within one business day.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Row 1 */}
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-1.5 block text-sm font-semibold" style={{ color: navy }}>
+                      Contact Name <span style={{ color: violet }}>*</span>
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Your full name"
+                      className="w-full rounded-xl border px-4 py-2.5 text-sm outline-none transition focus:ring-2"
+                      style={{
+                        borderColor: 'rgba(71,19,150,0.18)',
+                        color: navy,
+                        // @ts-ignore
+                        '--tw-ring-color': violet,
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-sm font-semibold" style={{ color: navy }}>
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="+1 000 000 0000"
+                      className="w-full rounded-xl border px-4 py-2.5 text-sm outline-none transition focus:ring-2"
+                      style={{ borderColor: 'rgba(71,19,150,0.18)', color: navy }}
+                    />
+                  </div>
+                </div>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:items-start">
-          <div className="space-y-6">
-            <div className="rounded-[1.25rem] border border-neutral-200 bg-[#fafafa] p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">Campaign desk</p>
-              <a href="mailto:campaigns@example.com" className="mt-3 block text-lg font-semibold text-neutral-900 hover:underline" style={{ color: accent }}>
-                campaigns@example.com
-              </a>
-              <p className="mt-2 text-sm text-neutral-600">Briefs, timelines, live-link reporting, and revision requests.</p>
-            </div>
-            <div className="rounded-[1.25rem] border border-neutral-200 bg-[#fafafa] p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">Partnerships</p>
-              <a href="mailto:partners@example.com" className="mt-3 block text-lg font-semibold hover:underline" style={{ color: accent }}>
-                partners@example.com
-              </a>
-              <p className="mt-2 text-sm text-neutral-600">Publisher onboarding, compliance, and co-marketing.</p>
-            </div>
-            <p className="text-center text-sm text-neutral-500 lg:text-left">
-              Prefer self-serve answers first?{' '}
-              <Link href="/faq" className="font-semibold hover:underline" style={{ color: accent }}>
-                Read the FAQ
-              </Link>{' '}
-              or{' '}
-              <Link href="/updates" className="font-semibold hover:underline" style={{ color: accent }}>
-                publisher updates
-              </Link>
-              .
-            </p>
+                {/* Email */}
+                <div>
+                  <label className="mb-1.5 block text-sm font-semibold" style={{ color: navy }}>
+                    Email <span style={{ color: violet }}>*</span>
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="you@outlet.com"
+                    className="w-full rounded-xl border px-4 py-2.5 text-sm outline-none transition focus:ring-2"
+                    style={{ borderColor: 'rgba(71,19,150,0.18)', color: navy }}
+                  />
+                </div>
+
+                {/* Help text */}
+                <p className="text-sm font-semibold" style={{ color: navy }}>
+                  Help us understand your needs a little more.
+                </p>
+
+                {/* Row 2 — selects */}
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-1.5 block text-sm font-semibold" style={{ color: navy }}>
+                      Type of organisation <span style={{ color: violet }}>*</span>
+                    </label>
+                    <select
+                      required
+                      className="w-full rounded-xl border px-4 py-2.5 text-sm outline-none transition focus:ring-2"
+                      style={{ borderColor: 'rgba(71,19,150,0.18)', color: navy }}
+                      defaultValue=""
+                    >
+                      <option value="" disabled>Please select</option>
+                      {orgTypes.map((o) => (
+                        <option key={o} value={o}>{o}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-sm font-semibold" style={{ color: navy }}>
+                      Subject — how may we help? <span style={{ color: violet }}>*</span>
+                    </label>
+                    <select
+                      required
+                      className="w-full rounded-xl border px-4 py-2.5 text-sm outline-none transition focus:ring-2"
+                      style={{ borderColor: 'rgba(71,19,150,0.18)', color: navy }}
+                      defaultValue=""
+                    >
+                      <option value="" disabled>Please select</option>
+                      {subjects.map((s) => (
+                        <option key={s} value={s}>{s}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div>
+                  <label className="mb-1.5 block text-sm font-semibold" style={{ color: navy }}>
+                    Message / Comment <span style={{ color: violet }}>*</span>
+                  </label>
+                  <textarea
+                    required
+                    rows={5}
+                    placeholder="Tell us about your inquiry, outlet, audience, and deadline..."
+                    className="w-full resize-none rounded-xl border px-4 py-2.5 text-sm outline-none transition focus:ring-2"
+                    style={{ borderColor: 'rgba(71,19,150,0.18)', color: navy }}
+                  />
+                </div>
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  className="w-full rounded-2xl py-3.5 text-sm font-semibold text-white transition hover:brightness-110"
+                  style={{ background: `linear-gradient(135deg, ${purple}, ${violet})` }}
+                >
+                  Submit Now
+                </button>
+              </form>
+            )}
           </div>
 
-          <div className="rounded-[1.35rem] border border-neutral-200 bg-white p-8 shadow-[0_12px_40px_rgba(0,0,0,0.05)]">
-            <h2 className="font-display text-xl font-semibold text-neutral-900">Write to us</h2>
-            <p className="mt-2 text-sm text-neutral-600">
-              Copy this into your email client—no account required. The more context you include, the faster we can
-              route you.
-            </p>
-            <dl className="mt-6 space-y-4 text-sm">
-              <div>
-                <dt className="font-semibold text-neutral-800">Subject</dt>
-                <dd className="mt-1 rounded-lg border border-neutral-200 bg-[#fafafa] px-3 py-2 font-mono text-xs text-neutral-700">
-                  Guest post inquiry — [your brand] — [primary niche]
-                </dd>
-              </div>
-              <div>
-                <dt className="font-semibold text-neutral-800">Include</dt>
-                <dd className="mt-1 text-neutral-600">
-                  Target URLs, sample content or tone, DR/DA floor, countries to avoid, and your ideal go-live window.
-                </dd>
-              </div>
-            </dl>
-            <a
-              href="mailto:campaigns@example.com?subject=Guest%20post%20inquiry"
-              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-white transition hover:brightness-95"
-              style={{ backgroundColor: accent }}
+          {/* Sidebar info */}
+          <div className="space-y-5">
+            <div
+              className="rounded-[1.25rem] border p-6"
+              style={{ borderColor: 'rgba(71,19,150,0.12)' }}
             >
-              Open email draft
-              <ArrowRight className="h-4 w-4" aria-hidden />
-            </a>
+              <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: violet }}>
+                Response Time
+              </p>
+              <p className="mt-2 text-sm text-neutral-500">
+                Monday to Friday<br />
+                One business day for new inquiries.<br />
+                Rush reviews available for active partners.
+              </p>
+            </div>
+
+            <div
+              className="rounded-[1.25rem] border p-6"
+              style={{ borderColor: 'rgba(71,19,150,0.12)' }}
+            >
+              <p className="text-xs font-bold uppercase tracking-[0.18em]" style={{ color: violet }}>
+                Quick Links
+              </p>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li>
+                  <a href="/press-releases" className="font-medium transition hover:opacity-70" style={{ color: navy }}>
+                    → Browse Press Releases
+                  </a>
+                </li>
+                <li>
+                  <a href="/faq" className="font-medium transition hover:opacity-70" style={{ color: navy }}>
+                    → Read the FAQ
+                  </a>
+                </li>
+                <li>
+                  <a href="/about" className="font-medium transition hover:opacity-70" style={{ color: navy }}>
+                    → About the Newsroom
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </main>
+
       <Footer />
     </div>
   )

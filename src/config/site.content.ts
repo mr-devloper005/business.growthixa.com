@@ -2,80 +2,80 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Guest posts & publisher outreach',
+    tagline: 'Official Newsroom & Press Releases',
   },
   footer: {
-    tagline: 'Premium content distribution',
+    tagline: 'Your source for official Growthixa news and announcements.',
   },
   hero: {
-    badge: 'Guest posting network',
-    title: ['Strategic placements on sites your audience already trusts.', 'Premium inventory, clear reporting, fast turnaround.'],
+    badge: 'Official Newsroom',
+    title: ['Breaking news, press releases, and official announcements from Growthixa.', 'Stay informed with verified media coverage and executive updates.'],
     description:
-      'High-authority guest posts, transparent pricing, and reporting built for agencies and in-house SEO teams.',
+      'The authoritative source for Growthixa press releases, media coverage, investor relations, and brand announcements.',
     primaryCta: {
-      label: 'Browse latest posts',
-      href: '/business',
+      label: 'Browse Press Releases',
+      href: '/press-releases',
     },
     secondaryCta: {
-      label: 'Contact us',
+      label: 'Media Inquiries',
       href: '/contact',
     },
-    searchPlaceholder: 'Search posts',
+    searchPlaceholder: 'Search press releases',
     focusLabel: 'Latest',
-    featureCardBadge: 'editor note',
-    featureCardTitle: 'Recent updates appear directly on the homepage.',
+    featureCardBadge: 'breaking news',
+    featureCardTitle: 'Latest press releases appear directly on the homepage.',
     featureCardDescription:
-      'The homepage works as a clean front page so new posts stay visible without decorative sections getting in the way.',
+      'Our newsroom is updated in real time so journalists and stakeholders always have access to the most current information.',
   },
   home: {
     metadata: {
-      title: 'Guest post distribution & high-authority backlinks',
+      title: 'Growthixa Newsroom — Official Press Releases & Media Coverage',
       description:
-        'Scale SEO-safe guest posting with vetted publishers, niche-relevant placements, and live-link reporting.',
-      openGraphTitle: 'Guest post distribution & high-authority backlinks',
+        'Access official press releases, executive announcements, media coverage, and investor news from Growthixa.',
+      openGraphTitle: 'Growthixa Newsroom — Official Press Releases & Media Coverage',
       openGraphDescription:
-        'Premium guest post placements, DA/DR-focused inventory, and fast turnaround for agencies and brands.',
-      keywords: ['guest posts', 'link building', 'SEO outreach', 'publisher network', 'backlinks', 'content distribution'],
+        'The official Growthixa newsroom. Press releases, media coverage, executive statements, and brand announcements.',
+      keywords: ['press releases', 'media coverage', 'newsroom', 'announcements', 'investor relations', 'Growthixa news'],
     },
-    introBadge: 'Distribution',
-    introTitle: 'A focused partner for editorial placements and measurable SEO outcomes.',
+    introBadge: 'Newsroom',
+    introTitle: 'The official source for Growthixa news, press releases, and media resources.',
     introParagraphs: [
-      'This template is designed for sites that publish straightforward updates and want the homepage to behave like a clean front page rather than a product landing page.',
-      'Posts are visible immediately, archives stay easy to scan, and the reading page keeps the focus on the article itself.',
-      'The interface is intentionally simple so the site feels usable, familiar, and fast to update.',
+      'Welcome to the Growthixa Newsroom — your authoritative destination for official press releases, executive announcements, and verified media coverage.',
+      'Journalists, analysts, and stakeholders can access the latest news, download media assets, and connect with our communications team directly from this hub.',
+      'All content is published and verified by the Growthixa communications team to ensure accuracy and timeliness.',
     ],
-    sideBadge: 'What it prioritizes',
+    sideBadge: 'What you will find here',
     sidePoints: [
-      'Recent posts directly on the homepage.',
-      'Simple archive layout with sidebar search and recent items.',
-      'Readable article pages without comments or extra modules.',
-      'A publishing-first structure that stays easy to maintain.',
+      'Official press releases and corporate announcements.',
+      'Executive statements and leadership commentary.',
+      'Media kit downloads including logos and brand assets.',
+      'Investor relations updates and financial news.',
     ],
     primaryLink: {
-      label: 'Open archive',
-      href: '/business',
+      label: 'View All Press Releases',
+      href: '/press-releases',
     },
     secondaryLink: {
-      label: 'Contact desk',
+      label: 'Media Inquiries',
       href: '/contact',
     },
   },
   cta: {
-    badge: 'Get in touch',
-    title: 'Use this template when publishing regular updates matters more than visual effects.',
+    badge: 'Media Inquiries',
+    title: 'Need official information or media assets? Our communications team is ready.',
     description:
-      'A straightforward layout for announcements, media coverage, partner updates, and newsroom-style content.',
+      'For press inquiries, interview requests, or media kit downloads, reach out to our communications desk directly.',
     primaryCta: {
-      label: 'Contact us',
+      label: 'Contact Press Team',
       href: '/contact',
     },
     secondaryCta: {
-      label: 'View archive',
-      href: '/business',
+      label: 'View Press Releases',
+      href: '/press-releases',
     },
   },
-  taskSectionHeading: 'Latest posts',
-  taskSectionDescriptionSuffix: 'Read the newest published updates.',
+  taskSectionHeading: 'Latest Press Releases',
+  taskSectionDescriptionSuffix: 'Read the newest official announcements and media coverage.',
 } as const
 
 export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'social'>, { title: string; description: string }> = {
@@ -108,8 +108,8 @@ export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'soci
     description: 'Open PDFs and downloadable files.',
   },
   mediaDistribution: {
-    title: 'Publisher updates',
-    description: 'Notes from the network—placement tips, policy updates, and campaign guidance.',
+    title: 'Press Releases',
+    description: 'Official press releases, announcements, and media coverage from Growthixa.',
   },
 }
 
@@ -128,14 +128,14 @@ export const taskIntroCopy: Record<
   comment: { title: 'Comments', paragraphs: ['Commentary and response posts.'], links: [{ label: 'Home', href: '/' }] },
   org: { title: 'Organizations', paragraphs: ['Organization pages and entities.'], links: [{ label: 'Home', href: '/' }] },
   mediaDistribution: {
-    title: 'Publisher updates',
+    title: 'Press Releases',
     paragraphs: [
-      'Short updates from our editorial and partnerships team—placement quality, niche coverage, and what to expect when campaigns go live.',
-      'Scan headlines for quick guidance, or open a post for the full brief. No galleries or thumbnails—just readable text.',
+      'Official press releases, executive announcements, and verified media coverage from the Growthixa communications team.',
+      'Browse by category or date to find the information you need. All releases are published directly by our team and available for media use.',
     ],
     links: [
       { label: 'Home', href: '/' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'Media Inquiries', href: '/contact' },
     ],
   },
 }

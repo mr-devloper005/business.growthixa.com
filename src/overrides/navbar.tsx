@@ -7,10 +7,14 @@ import { SITE_CONFIG } from '@/lib/site-config'
 
 export const NAVBAR_OVERRIDE_ENABLED = true
 
+const navy = '#090040'
+const purple = '#471396'
+const violet = '#B13BFF'
+
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Services', href: '/#services' },
-  { label: 'Publishers', href: '/updates' },
+  { label: 'Press Releases', href: '/press-releases' },
+  { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ] as const
 
@@ -18,29 +22,55 @@ export function NavbarOverride() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-neutral-200/90 bg-white/95 text-neutral-900 backdrop-blur-md">
-      <nav className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="shrink-0 font-display text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl">
-          {SITE_CONFIG.name}
+    <header
+      className="sticky top-0 z-50 backdrop-blur-md"
+      style={{
+        background: 'rgba(255,255,255,0.97)',
+        borderBottom: '1px solid rgba(71,19,150,0.12)',
+      }}
+    >
+      <nav className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        {/* Logo */}
+        <Link href="/" className="shrink-0">
+          <img
+            src="/logo.png"
+            alt={SITE_CONFIG.name}
+            className="h-9 w-auto object-contain"
+          />
         </Link>
 
-        <div className="hidden flex-1 items-center justify-center gap-8 lg:flex">
+        {/* Desktop nav */}
+        <div className="hidden flex-1 items-center justify-center gap-7 lg:flex">
           {navLinks.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900"
+              className="text-sm font-medium transition"
+              style={{ color: '#4a4a6a' }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = purple)}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = '#4a4a6a')}
             >
               {item.label}
             </Link>
           ))}
         </div>
 
-        <div className="hidden w-[120px] shrink-0 lg:block" aria-hidden />
+        {/* CTA button */}
+        <div className="hidden lg:block">
+          <Link
+            href="/contact"
+            className="inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-110"
+            style={{ background: `linear-gradient(135deg, ${purple}, ${violet})` }}
+          >
+            Media Inquiries
+          </Link>
+        </div>
 
+        {/* Mobile hamburger */}
         <button
           type="button"
-          className="inline-flex rounded-xl p-2 text-neutral-700 hover:bg-neutral-100 lg:hidden"
+          className="inline-flex rounded-xl p-2 transition lg:hidden"
+          style={{ color: navy }}
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -49,19 +79,32 @@ export function NavbarOverride() {
         </button>
       </nav>
 
+      {/* Mobile menu */}
       {open ? (
-        <div className="border-t border-neutral-200 bg-white px-4 py-4 lg:hidden">
+        <div
+          className="border-t px-4 py-4 lg:hidden"
+          style={{ borderColor: 'rgba(71,19,150,0.1)', background: '#fff' }}
+        >
           <div className="mx-auto flex max-w-6xl flex-col gap-1">
             {navLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-xl px-3 py-3 text-sm font-medium text-neutral-700 hover:bg-neutral-50"
+                className="rounded-xl px-3 py-3 text-sm font-medium transition"
+                style={{ color: navy }}
                 onClick={() => setOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
+            <Link
+              href="/contact"
+              className="mt-2 rounded-xl px-3 py-3 text-sm font-semibold text-white transition"
+              style={{ background: `linear-gradient(135deg, ${purple}, ${violet})` }}
+              onClick={() => setOpen(false)}
+            >
+              Media Inquiries
+            </Link>
           </div>
         </div>
       ) : null}
